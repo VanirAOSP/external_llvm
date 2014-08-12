@@ -4,6 +4,8 @@ LLVM_ENABLE_ASSERTION := false
 
 include $(CLEAR_VARS)
 
+ifneq ($(TARGET_ENABLE_PREBUILT_CLANG),true)
+
 # LLVM Libraries
 subdirs := \
   lib/Analysis \
@@ -74,3 +76,5 @@ subdirs += tools/llvm-link
 include $(LOCAL_PATH)/llvm.mk
 include $(LOCAL_PATH)/shared_llvm.mk
 include $(addprefix $(LOCAL_PATH)/,$(addsuffix /Android.mk, $(subdirs)))
+
+endif
